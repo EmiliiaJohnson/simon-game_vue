@@ -2,7 +2,7 @@
 # abort on errors
 set -e
 # build
-тзь run build
+npm run build
 # navigate into the build output directory
 cd dist
 
