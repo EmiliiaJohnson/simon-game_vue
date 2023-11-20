@@ -1,0 +1,98 @@
+$opacity: 0.6;
+$pointer: pointer;
+$transition: all 0.2s ease;
+$border-radius: 12px;
+$box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+  }
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
+  .game-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+    align-items: center;
+}
+  .game {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    border: 5px solid;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: $box-shadow;
+    &.lose {
+        animation: lose 0.3s ease-in;
+    }
+  }
+  .settings {
+    @include flex-column();
+    margin: 50px;
+    justify-content: space-around;
+    width: 300px;
+    height: 250px;
+    padding: 30px;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  }
+  .section-wrap {
+    @include flex-column();
+    height: 100%;
+    width: 100%;
+  }
+  select, button {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: $border-radius;
+    background-color: #b7f0ff;
+    font-size: 16px;
+    text-align: center;
+    cursor: $pointer;
+    transition: $transition;
+    &:hover {
+        background-color: #8edaef;
+    }
+  }
+  .section {
+    cursor: $pointer;
+    height: 100%;
+    opacity: $opacity;
+    transition: $transition;
+    &.active {
+        box-shadow: 0 0 10px 0 #00000073 inset;
+        opacity: 1;
+    }
+    &.locked {
+        cursor: auto;
+    }
+    &.green {
+      background-color: green;
+    }
+    &.red{
+      background-color: red;
+    }
+    &.yellow {
+      background-color: yellow;
+    }
+    &.blue {
+      background-color: blue;
+    }
+  }
+  @keyframes lose {
+    0% {transform: scale(1)}
+    50% {transform: scale(0.95)}
+    100% {transform: scale(1)}
+  }
